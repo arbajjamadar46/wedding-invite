@@ -188,7 +188,7 @@ body {
   color: var(--gold-dim);
   font-weight: 500;
 }
-/* CTA — sits between parchment body and bottom roller, always visible */
+/* CTA — always visible, sits between parchment and bottom roller */
 .si-cta {
   display: inline-flex; align-items: center; gap: 9px;
   background: linear-gradient(135deg, var(--green), var(--green-mid));
@@ -198,20 +198,16 @@ body {
   padding: 14px 32px; border-radius: 999px;
   font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600;
   font-family: 'DM Sans', sans-serif;
-  box-shadow: 0 8px 32px rgba(15,61,46,0.55), 0 0 0 1px rgba(212,175,55,0.15);
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s, filter 0.3s;
-  /* Fade in after parchment content, then pulse */
-  opacity: 0;
-  animation: siChildFade 0.7s ease 2.1s forwards, ctaPulse 2.5s ease-in-out 2.9s infinite;
+  box-shadow: 0 8px 32px rgba(15,61,46,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
   margin: 10px 0 6px;
   align-self: center;
   z-index: 10;
 }
 .si-cta:hover {
   transform: scale(1.06);
-  filter: brightness(1.12);
-  box-shadow: 0 12px 40px rgba(15,61,46,0.6), 0 0 20px rgba(212,175,55,0.15);
-  animation: none;
+  filter: brightness(1.15);
+  box-shadow: 0 14px 44px rgba(15,61,46,0.65), 0 0 20px rgba(212,175,55,0.2);
 }
 @keyframes ctaPulse {
   0%,100% { box-shadow: 0 6px 28px rgba(15,61,46,0.45); }
