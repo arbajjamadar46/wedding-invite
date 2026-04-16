@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en">
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -12,6 +12,22 @@
 </head>
 
 <body style="overflow:hidden;">
+
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="src/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- MUSIC TOGGLE BUTTON -->
+  <button id="musicToggle" class="music-toggle" aria-label="Toggle Music" title="Toggle Music">
+    <div class="eq-bars">
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+      <span class="eq-bar"></span>
+    </div>
+    <span class="music-icon-off material-symbols-outlined">music_off</span>
+  </button>
 
   <!-- CINEMATIC SCROLL INTRO -->
   <div id="scroll-intro">
@@ -84,6 +100,11 @@
 
     <!-- Gold sparkle burst (reused) -->
     <div class="gold-burst" id="goldBurst"></div>
+  </div>
+
+  <!-- TRANSITION OVERLAY — smooth splash between landing & main -->
+  <div id="transitionOverlay" class="transition-overlay">
+    <div class="transition-shimmer"></div>
   </div>
 
   <!-- SCROLL PROGRESS -->
@@ -421,32 +442,71 @@
       </div>
     </section>
 
-    <!-- SUMMARY -->
-    <section class="bg-rose-glow" style="padding:clamp(60px,10vw,96px) 16px;">
-      <div
-        style="max-width:600px;margin:0 auto;border-top:1px solid rgba(212,175,55,.2);border-bottom:1px solid rgba(212,175,55,.2);padding:clamp(40px,8vw,64px) 0;text-align:center"
-        class="anim-up">
-        <h2
-          style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,5vw,34px);color:#0f3d2e;margin-bottom:24px;letter-spacing:-0.5px">
-          Saniya &amp; Muaaj</h2>
-        <div
-          style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#4a4a4a;margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:16px">
-          <span>Haldi: 25 April</span><span style="color:#d4af37">●</span><span>Nikah: 26 April</span>
+    <!-- GRAND FINALE — Summary & Farewell -->
+    <section class="summary-finale" id="summary">
+      <!-- Background ambience -->
+      <div class="sf-bg-pattern" aria-hidden="true"></div>
+      <div class="sf-glow" aria-hidden="true"></div>
+
+      <div class="sf-content">
+        <!-- Ornament top -->
+        <div class="sf-ornament anim-up">✦</div>
+
+        <!-- Names -->
+        <h2 class="sf-names anim-up" data-delay="1">
+          Saniya <span class="sf-amp">&amp;</span> Muaaj
+        </h2>
+
+        <!-- Timeline strip -->
+        <div class="sf-timeline anim-up" data-delay="2">
+          <div class="sf-timeline-row">
+            <div class="sf-timeline-dot haldi-dot"></div>
+            <div class="sf-timeline-detail">
+              <span class="sf-event-name">Haldi</span>
+              <span class="sf-event-date">25 April 2026</span>
+            </div>
+          </div>
+          <div class="sf-timeline-line"></div>
+          <div class="sf-timeline-row">
+            <div class="sf-timeline-dot nikah-dot"></div>
+            <div class="sf-timeline-detail">
+              <span class="sf-event-name">Nikah</span>
+              <span class="sf-event-date">26 April · 11:35 AM</span>
+            </div>
+          </div>
         </div>
-        <p style="color:#0f3d2e;margin-bottom:32px;opacity:0.7;font-size:14px">Sarjai Mangal Karyalaya, Mhaswad</p>
-        <div style="border-top:1px solid rgba(212,175,55,.1);padding-top:32px;width:66%;margin:0 auto">
-          <p style="font-family:'Amiri',serif;font-style:italic;font-size:13px;letter-spacing:2px;color:#0f3d2e">&ldquo;बऱाए
-             करम किसी भी किस्म का तोहफा नहीं लिया जाएगा&rdquo;</p>
+
+        <!-- Location -->
+        <div class="sf-location anim-up" data-delay="3">
+          <span class="material-symbols-outlined">location_on</span>
+          <span>Sarjai Mangal Karyalaya, Mhaswad</span>
+        </div>
+
+        <!-- Divider -->
+        <svg class="sf-divider anim-up" viewBox="0 0 200 12" fill="none">
+          <line x1="0" y1="6" x2="70" y2="6" stroke="#d4af37" stroke-width="0.5" opacity="0.3"/>
+          <circle cx="100" cy="6" r="3" stroke="#d4af37" stroke-width="0.6" fill="none" opacity="0.4"/>
+          <circle cx="100" cy="6" r="1" fill="#d4af37" opacity="0.5"/>
+          <line x1="130" y1="6" x2="200" y2="6" stroke="#d4af37" stroke-width="0.5" opacity="0.3"/>
+        </svg>
+
+        <!-- Quote -->
+        <div class="sf-quote anim-up" data-delay="4">
+          <p>&ldquo;बऱाए करम किसी भी किस्म का तोहफा नहीं लिया जाएगा&rdquo;</p>
+        </div>
+
+        <!-- Closing dua -->
+        <div class="sf-dua anim-up" data-delay="4">
+          <p class="sf-dua-text">May Allah bless this union with infinite love</p>
+          <span class="sf-dua-heart heart-beat">❤</span>
+        </div>
+
+        <!-- Footer integrated -->
+        <div class="sf-footer">
+          <p>With Love &amp; Blessings, 2026</p>
         </div>
       </div>
     </section>
-
-    <!-- FOOTER -->
-    <footer class="site-footer" style="padding:48px;text-align:center">
-      <p
-        style="font-family:'Playfair Display',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0f3d2e;opacity:.45">
-        With Love &amp; Blessings, 2026</p>
-    </footer>
 
     <!-- MOBILE NAV -->
     <nav class="mobile-nav">
